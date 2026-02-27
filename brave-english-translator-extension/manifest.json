@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "English Page & Image Translator",
+  "description": "Translates webpage text and image text into English with readable white-background overlays.",
+  "version": "1.0.0",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": [
+    "https://translate.googleapis.com/*",
+    "https://api.ocr.space/*",
+    "<all_urls>"
+  ],
+  "action": {
+    "default_title": "English Translator",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
